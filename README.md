@@ -33,3 +33,29 @@ kubectl apply -f 07-fluent-bit-configmap.yaml
 kubectl apply -f 08-fluent-bit-daemonset.yaml
 ```
 
+**Create Kibana nginx Ingress with basic authentication (Optional)**
+
+1- Creating auth file with username and password:
+```
+USER=<USERNAME_HERE>; PASSWORD=<PASSWORD_HERE>; echo "${USER}:$(openssl passwd -stdin -apr1 <<< ${PASSWORD})" >> auth
+
+Example:
+  USER=elastic; PASSWORD=Admin1234 echo "${USER}:$(openssl passwd -stdin -apr1 <<< ${PASSWORD})" >> auth
+```
+2- Creating a secret based on file auth.
+```
+kubectl -n kube-logging create secret generic kibana-basic-auth --from-file=auth
+```
+3- Deploy nginx ingress for kibana:
+```
+kubectl apply -f ingress-kibana.yaml
+```
+
+**Login to Kibana**
+
+![image](https://github.com/IMAN-NAMJOOYAN/deploy-efk-in-kubernetes/assets/16554389/ee9abd2b-ffbd-47c9-8399-0296a9851677)
+
+
+![image](https://github.com/IMAN-NAMJOOYAN/deploy-efk-in-kubernetes/assets/16554389/dc349148-b05e-4c37-8b58-a1b88bbad1b4)
+
+
