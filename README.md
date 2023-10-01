@@ -29,7 +29,7 @@ kubectl apply -f 06-fluent-bit-service.yaml
 kubectl apply -f 07-fluent-bit-configmap.yaml
 ```
 8- Create fluentbit daemonset.
-```kubectl apply -f 08-fluent-bit-daemonset.yaml
-
+```
+kubectl apply -f 08-fluent-bit-daemonset.yaml
 ```
 
