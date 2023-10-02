@@ -55,6 +55,18 @@ spec:
             value: "es-cluster-0,es-cluster-1,es-cluster-2"
           - name: ES_JAVA_OPTS
             value: "-Xms512m -Xmx512m"
+          - name: ELASTIC_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-credentials
+                key: username
+          - name: ELASTIC_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-credentials
+                key: password
+          - name: xpack.security.enabled
+            value: "true"
       initContainers:
       - name: fix-permissions
         image: busybox
