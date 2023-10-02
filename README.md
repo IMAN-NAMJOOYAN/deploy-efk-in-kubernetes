@@ -67,8 +67,11 @@ kubectl -n kube-logging create secret generic kibana-basic-auth --from-file=auth
 ```
 kubectl apply -f ingress-kibana.yaml
 ```
+**Login to Kibana (Without basic authentication)**
 
-**Login to Kibana**
+![image](https://github.com/IMAN-NAMJOOYAN/deploy-efk-in-kubernetes/assets/16554389/bb941a52-902d-4a6f-8881-13d1b0b4e7aa)
+
+**Login to Kibana (With ingress and basic Authentication)**
 
 ![image](https://github.com/IMAN-NAMJOOYAN/deploy-efk-in-kubernetes/assets/16554389/ee9abd2b-ffbd-47c9-8399-0296a9851677)
 
