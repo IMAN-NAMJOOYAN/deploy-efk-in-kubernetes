@@ -28,5 +28,15 @@ spec:
         env:
           - name: ELASTICSEARCH_URL
             value: http://elasticsearch:9200
+          - name: ELASTICSEARCH_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-credentials
+                key: username
+          - name: ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-credentials
+                key: password
         ports:
         - containerPort: 5601
