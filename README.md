@@ -1,34 +1,50 @@
 # deploy-efk-in-kubernetes
 **Deploy EFK (Elasticsearch Fluentbit Kibana) in Kubernetes**
-1- Create kube-logging namespace.
+
+**LOM:**
+App|Version
+---|---
+kubenetes|1.26.5
+elasticsearch|7.17.13
+kibana|7.17.13
+fluentbit|2.1.10
+
+
+
+1- Create kube-logging namespace
 ```
 kubectl apply -f 01-create-ns.yaml
 ```
-2- Create elasticsearch service.
+2- Create secret for username and password.
+*Note: username and pasword must be base64 format.*
+```
+kubectl apply -f elastics-secret.yaml
+```
+3- Create elasticsearch service.
 ```
 kubectl apply -f 02-elastic-service.yaml
 ```
-3- Create elasticsearch statefulset.
+4- Create elasticsearch statefulset.
 ```
 kubectl apply -f 03-elastic-statefulset.yaml
 ```
-4- Create kibana service.
+5- Create kibana service.
 ```
 kubectl apply -f 04-kibana-service.yaml
 ```
-5- Create kibana Deployment.
+6- Create kibana Deployment.
 ```
 kubectl apply -f 05-kibana-deployment.yaml
 ```
-6- Create fluentbit service.
+7- Create fluentbit service.
 ```
 kubectl apply -f 06-fluent-bit-service.yaml
 ```
-7- Create fluentbit configmap.
+8- Create fluentbit configmap.
 ```
 kubectl apply -f 07-fluent-bit-configmap.yaml
 ```
-8- Create fluentbit daemonset.
+9- Create fluentbit daemonset.
 ```
 kubectl apply -f 08-fluent-bit-daemonset.yaml
 ```
