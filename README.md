@@ -16,6 +16,7 @@ fluentbit|2.1.10
 kubectl apply -f 01-create-ns.yaml
 ```
 2- Create secret for username and password.
+
 *Note: username and pasword must be base64 format.*
 ```
 kubectl apply -f elastics-secret.yaml
